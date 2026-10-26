@@ -36,7 +36,7 @@ The fstack loop is the backbone. Other skills plug in only at the points below. 
 | Each feature | `fstack-nail` (only if the request is unclear) → `fstack-plan` → `fstack-build` → `fstack-check` → `fstack-push` |
 | Inside `fstack-build`, for logic that must be correct (calculations, scheduling, data rules) | `tdd` |
 | Visual style | `frontend-design` once at kickoff to create the style. After that, only `fstack-design` to keep new screens consistent with `src/theme.css` |
-| Before any pull request that changes the UI | `webapp-testing` at a mobile screen size (390×844), then `web-design-guidelines`. Fix real problems and list minor ones in the PR description. If browser tools can't run here, say so and continue |
+| Before any pull request that changes the UI | `webapp-testing` at a mobile screen size (390×844) on the production build (`npm run build`, then `npx vite preview`), not the dev server. Save reusable test scripts in `tests/ui/` and commit them. Save a screenshot of each changed screen to `docs/screens/<screen>.png` (`<screen>-dark.png` for the dark theme), replacing the old one, so the PR shows before and after. Then `web-design-guidelines`. Fix real problems and list minor ones in the PR description. If browser tools can't run here, say so and continue |
 | Bug found by `fstack-check` or testing, with a cause that isn't obvious | `diagnosing-bugs` |
 | Trying an idea | `prototype` on a separate throwaway branch (`prototype/<name>`). Never merge it. If it works, plan it properly with `fstack-plan` |
 | Understanding the code | `zoom-out` (read-only, changes nothing) |
