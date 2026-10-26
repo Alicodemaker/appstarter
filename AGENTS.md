@@ -21,6 +21,7 @@ _Not filled in yet. KICKOFF.md fills this in from BRIEF.md._
 - **One theme file.** All colours, fonts and spacing live in `src/theme.css` as CSS variables. Components use only those variables and never hard-code values. If you need a new value, add it to the theme file first.
 - **Small commits.** Make one logical change per commit, with a plain one-line message. Push often.
 - **Keep it simple.** Add no dependency, abstraction or feature that the current plan doesn't need. When in doubt, leave it out.
+- **Network hosts.** Production builds carry a strict Content-Security-Policy (`csp` in `vite.config.js`) that only lets the app talk to itself. Add every new network host (an API, fonts, images) to it, or its requests are silently blocked. The dev server has no policy, so test anything that uses the network on the production build.
 - **Stack.** Use Vite and `vite-plugin-pwa`, with plain JS/CSS by default. Add a UI framework only if a plan explicitly calls for one.
 - **Deploy.** Pushing to `main` deploys to GitHub Pages under `/<repo>/` (`.github/workflows/deploy.yml`). Never hard-code `/` as a root path: use relative paths or Vite's `import.meta.env.BASE_URL`.
 
