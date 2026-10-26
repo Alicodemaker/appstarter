@@ -26,6 +26,18 @@ _Not filled in yet. KICKOFF.md fills this in from BRIEF.md._
 - **Deploy.** Pushing to `main` deploys to GitHub Pages under `/<repo>/` (`.github/workflows/deploy.yml`). Never hard-code `/` as a root path: use relative paths or Vite's `import.meta.env.BASE_URL`.
 - **Watch pull requests.** After opening a pull request, follow it through: fix failing CI (`.github/workflows/ci.yml` tests and builds every pull request) and address review comments, and push until CI is green. If you can't watch it here, check CI before you finish.
 
+## When the app needs a backend (optional)
+
+By default an app has no backend: data stays on the device. Add a backend only when a plan needs one (accounts, sync, payments, or data shared between people), and record the choice in an ADR. The app must still load and work offline.
+
+When that happens, suggest the options below, or check them against whatever you were going to propose. Tell me the trade-offs and let me choose before you build.
+
+- **Backend and database:** Convex (real-time and type-safe, with ready-made components for Stripe payments, WorkOS logins and PostHog analytics), or PlanetScale when plain Postgres fits better.
+- **Hosting with server code:** Vercel, or Cloudflare (Workers, R2 storage, Durable Objects). If you pick Cloudflare, use its whole stack. GitHub Pages stays the host for apps without a backend.
+- **Framework, if plain JS stops being enough:** SvelteKit (fast by default) or Next.js. This still needs a plan that explicitly calls for it (see **Stack**).
+- **Backend service code:** Effect, for TypeScript with typed error handling.
+- **Personal data:** check that the provider can keep data in the EU (GDPR).
+
 ## Skill map
 
 The fstack loop is the backbone. Other skills plug in only at the points below. Never use two skills for the same job. If a skill mentions a skill that isn't on this map (for example, `tdd` mentions `code-review`), use the mapped skill for that job instead (`fstack-check` for review, `fstack-simplify` for cleanup).
