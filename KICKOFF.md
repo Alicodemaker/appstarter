@@ -23,9 +23,9 @@ Instructions for the first session of a new app built from this template. Follow
    - look and feel
    - what data it needs
 
-   Record decisions in the docs (glossary and ADRs, as the skill does). Then write `BRIEF.md` (under one page) and fill in the **Project brief** section of `AGENTS.md`.
+   Record decisions in the docs (glossary and ADRs, as the skill does). Then write `BRIEF.md` (under one page) and fill in the **Project brief** section of `AGENTS.md`. Replace only that section. Before committing, diff `AGENTS.md` and check that every other section is unchanged.
 
-4. **Create the style: `frontend-design`.** Put the chosen colours, fonts and spacing into `src/theme.css` (the one theme file; keep its variable names where they fit), and build one sample screen, mobile-first, that uses only those variables. Update `theme_color` and `background_color` in `vite.config.js` and the `theme-color` meta tag in `index.html` to match.
+4. **Create the style: `frontend-design`.** First ask me for 2–3 apps, sites or screenshots I like (for example from Mobbin) and what I like about each, and use them as the direction. Self-host any font in `src/fonts/`: the Content-Security-Policy blocks other hosts, and the app must work offline. Put the chosen colours, fonts and spacing into `src/theme.css` (the one theme file; keep its variable names where they fit), and build one sample screen, mobile-first, that uses only those variables. Update `theme_color` and `background_color` in `vite.config.js` and the `theme-color` meta tag in `index.html` to match.
 
 5. **Audit the sample screen: `web-design-guidelines`.** Fix real problems and list minor ones in the summary.
 

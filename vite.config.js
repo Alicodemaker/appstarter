@@ -6,9 +6,31 @@ import { VitePWA } from 'vite-plugin-pwa'
 // app, manifest and service worker all work under the repo subpath.
 const base = process.env.BASE_PATH || '/'
 
+// Content-Security-Policy for the built app: it may only run its own files and
+// only talk to itself, so injected code can't send data anywhere else. Add each
+// new network host to connect-src (or the matching directive), or its calls are
+// silently blocked. Build only: the dev server needs inline styles for hot reload.
+const csp = [
+  "default-src 'self'",
+  "connect-src 'self'",
+  "img-src 'self' data:",
+  "object-src 'none'",
+  "base-uri 'none'",
+  "form-action 'none'",
+].join('; ')
+
+const contentSecurityPolicy = {
+  name: 'content-security-policy',
+  apply: 'build',
+  transformIndexHtml: () => [
+    { tag: 'meta', attrs: { 'http-equiv': 'Content-Security-Policy', content: csp }, injectTo: 'head-prepend' },
+  ],
+}
+
 export default defineConfig({
   base,
   plugins: [
+    contentSecurityPolicy,
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
