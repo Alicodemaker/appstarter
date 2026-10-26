@@ -24,6 +24,7 @@ _Not filled in yet. KICKOFF.md fills this in from BRIEF.md._
 - **Network hosts.** Production builds carry a strict Content-Security-Policy (`csp` in `vite.config.js`) that only lets the app talk to itself. Add every new network host (an API, fonts, images) to it, or its requests are silently blocked. The dev server has no policy, so test anything that uses the network on the production build.
 - **Stack.** Use Vite and `vite-plugin-pwa`, with plain JS/CSS by default. Add a UI framework only if a plan explicitly calls for one.
 - **Deploy.** Pushing to `main` deploys to GitHub Pages under `/<repo>/` (`.github/workflows/deploy.yml`). Never hard-code `/` as a root path: use relative paths or Vite's `import.meta.env.BASE_URL`.
+- **Watch pull requests.** After opening a pull request, follow it through: fix failing CI (`.github/workflows/ci.yml` tests and builds every pull request) and address review comments, and push until CI is green. If you can't watch it here, check CI before you finish.
 
 ## Skill map
 
